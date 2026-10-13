@@ -14,12 +14,28 @@ document.querySelectorAll('[data-filter]').forEach(button => button.addEventList
   let visible = 0;
   document.querySelectorAll('[data-category]').forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; if(!card.hidden) visible++; });
   const status = document.getElementById('filter-status');
-  if(status) status.textContent = `${visible} concept project${visible === 1 ? '' : 's'} shown.`;
+  if(status) status.textContent = `${visible} project${visible === 1 ? '' : 's'} shown.`;
 }));
 
 const concepts = {
-  common: {title:'Common Ground', description:'An illustrative identity for a neighborhood coffee brand. Bold type, a warm color palette and a simple packaging system make the idea recognizable across everyday touchpoints.',scope:['Naming and editorial wordmark exploration','Coffee packaging and color system','Illustrative project, created for this portfolio demo']},
-  sable: {title:'Sable', description:'An illustrative website direction for a considered skincare brand. An editorial layout, restrained palette and clear hierarchy create room for the product story.',scope:['Homepage art direction and product presentation','Typography, spacing and color exploration','Illustrative project, created for this portfolio demo']}
+  "uninest": {
+    "title": "UniNest Pakistan",
+    "description": "An educational team project exploring a student hostel and roommate finder for Pakistan. The project repository includes the application and setup notes.",
+    "scope": [
+      "Team educational project; this portfolio does not claim sole authorship",
+      "Hostel discovery, bookings, reviews and administration",
+      "Node.js / Express and SQLite; source available on GitHub"
+    ]
+  },
+  "careswitch": {
+    "title": "CareSwitch",
+    "description": "My personal student prototype for a browser-based communication board, exploring phrase buttons, speech output and optional head-control interactions.",
+    "scope": [
+      "Personal educational prototype with a live browser demo",
+      "Speech and interaction experiments; camera use is optional",
+      "Experimental project, without clinical validation or emergency-use claims"
+    ]
+  }
 };
 const dialog = document.getElementById('project-dialog');
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
@@ -40,7 +56,7 @@ if(form) {
   }
   const service = document.getElementById('service');
   const requested = new URLSearchParams(location.search).get('service');
-  if(['strategy','identity','web','combined'].includes(requested)) service.value = requested;
+  if(['landing','website','updates','other'].includes(requested)) service.value = requested;
   const message = document.getElementById('message');
   const count = document.getElementById('message-count');
   message.addEventListener('input', () => { count.textContent = `${message.value.length} / 3000`; message.setCustomValidity(''); });
@@ -62,7 +78,7 @@ if(form) {
     const entries = [['Name',String(data.get('name')).trim()],['Email',String(data.get('email')).trim()],['Service',service.selectedOptions[0].textContent],['Budget',String(data.get('budget'))],['Timeline',String(data.get('timeline')).trim() || 'Not specified'],['Project',String(data.get('message')).trim()]];
     const summary = document.getElementById('inquiry-summary');
     summary.replaceChildren(...entries.flatMap(([label,value]) => { const dt = document.createElement('dt'); const dd = document.createElement('dd'); dt.textContent = label; dd.textContent = value; return [dt,dd]; }));
-    inquiry = `FORMA STUDIO — INQUIRY COPY\nThis copy does not confirm email delivery.\n\n${entries.map(([label,value]) => `${label}: ${value}`).join('\n\n')}`;
+    inquiry = `SYED KAIF ALI — INQUIRY COPY\nThis copy does not confirm email delivery.\n\n${entries.map(([label,value]) => `${label}: ${value}`).join('\n\n')}`;
     form.hidden = true; result.hidden = false; result.focus({preventScroll:true}); result.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'center'});
   });
   document.getElementById('edit-inquiry').addEventListener('click', () => { result.hidden = true; form.hidden = false; document.getElementById('name').focus(); });
@@ -77,5 +93,5 @@ if(form) {
     notice.textContent = 'Your inquiry was submitted. Thank you for sharing your project.';
     document.querySelector('.contact-intro').after(notice);
   }
-  document.getElementById('download-inquiry').addEventListener('click', () => { const url = URL.createObjectURL(new Blob([inquiry], {type:'text/plain;charset=utf-8'})); const a = document.createElement('a'); a.href=url; a.download='forma-demo-inquiry.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000); });
+  document.getElementById('download-inquiry').addEventListener('click', () => { const url = URL.createObjectURL(new Blob([inquiry], {type:'text/plain;charset=utf-8'})); const a = document.createElement('a'); a.href=url; a.download='kaif-website-inquiry.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000); });
 }

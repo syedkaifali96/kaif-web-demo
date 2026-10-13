@@ -1,27 +1,28 @@
-# Forma Studio — Kaif Web Demo
+# Syed Kaif Ali — Personal Web Portfolio
 
-A responsive four-page portfolio concept by Syed Kaif Ali, built with AI-assisted HTML, CSS and JavaScript. Forma Studio and its displayed concepts are fictional, personal portfolio work, not commissioned client projects.
+A four-page personal portfolio for a student web developer in Karachi, Pakistan. Built with AI-assisted HTML, CSS and JavaScript.
 
 **Live website:** https://syedkaifali96.github.io/kaif-web-demo/
 
-## Pages and interactions
+## Content
 
-- Home, About, Services and Contact.
-- Responsive navigation, project filters and project preview dialogs.
-- Service FAQs and service selection passed to the contact page.
-- Contact validation, inquiry preview, editing and downloadable inquiry copy.
-- Original SVG artwork, keyboard focus styles and reduced-motion support.
+- Home, About, Services and Contact, with responsive navigation.
+- UniNest Pakistan is labeled as an educational team project, without claiming sole authorship.
+- CareSwitch is labeled as a personal student prototype, without clinical or emergency-use claims.
+- Project artwork consists of original illustrative SVG previews, rather than actual application screenshots.
+- Business contact links, GitHub and LinkedIn; no birth date or precise home address.
+- Project filters and dialogs, service FAQs, form validation, inquiry preview, edit and download.
 
-## Run and edit
+## Editing
 
-The website has no package dependencies or build requirement. Open `index.html`, or serve this folder with any static HTTP server. Edit `styles.css`, `app.js` and the SVG assets directly. Page templates are in `build-demo.mjs`; run `node build-demo.mjs` to regenerate the four HTML pages. Template regeneration overwrites those HTML files.
+No package dependencies. Run `node build-demo.mjs` to regenerate the four HTML pages from the templates; this overwrites the HTML files. Edit `styles.css`, `app.js` and SVG assets directly. Serve this folder with a static HTTP server for local testing.
 
-GitHub Pages publishes `main` from the repository root. `.nojekyll` disables Jekyll processing. Navigation and assets use relative URLs so the website works under `/kaif-web-demo/`.
+GitHub Pages publishes `main` from the repository root. `.nojekyll` disables Jekyll processing. Relative navigation and asset URLs preserve the project-folder path.
 
 ## Contact form
 
-The first submit creates an on-device inquiry preview. Only **Send inquiry** posts the visitor's details to [FormSubmit](https://formsubmit.co/) for email delivery to the portfolio owner. Default CAPTCHA protection is enabled. The recipient confirmed activation; mailbox receipt has not been independently verified.
+Preview your inquiry creates an on-device summary. Only **Send inquiry** posts visitor details to [FormSubmit](https://formsubmit.co/) for email delivery to the owner. Default CAPTCHA protection is retained. Activation and receipt of a test inquiry from this GitHub Pages origin were confirmed in the recipient mailbox on 13 October 2026.
 
-The static fallback return URL is configured for this GitHub Pages website. JavaScript calculates the return page relative to the current page, preserving a project-folder path. To change the recipient, edit the form action in `build-demo.mjs` and regenerate. Do not put passwords, mail credentials or API secrets into public static files.
+JavaScript sets the return page relative to the current contact page, preserving `/kaif-web-demo/`. The static fallback is also configured for the live website. To change the recipient, edit the form action in the page generator and regenerate. Never add mail passwords or API secrets to this public repository.
 
-This repository contains the public website and its page generator, without ChatGPT hosting configuration, tokens, private source history or account data. It does not require ChatGPT sign-in.
+This static site is publicly accessible and does not require ChatGPT sign-in.
