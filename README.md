@@ -1,9 +1,9 @@
 # Syed Kaif Ali — Portfolio
 
-A static portfolio inspired by the editorial layout at dossier-iota-one.vercel.app, customized with Kaif’s cream, lilac and lime palette, identity-preserving AI-assisted portrait, and seven selected projects.
+A static portfolio with a typography-led opening, Kaif's original photo in the following introduction section, and seven selected projects. The cream, lilac and lime palette is preserved.
 
-Open with a static HTTP server. index.html, portfolio-v2.css and portfolio-v2.js are the main source. About, Services and Contact share the same design. The contact form retains its inquiry review and email flow; project filtering, search and dialogs run locally in the browser.
+Project covers are complete original SVG interface concepts created for this portfolio. They are labeled as concepts, rather than actual product screenshots. Private projects expose summaries only.
 
-Project covers are original SVG illustrations. The portrait was made with the built-in ImageGen tool from Kaif’s GitHub photo. No superhero or costume reveal is included.
+Project cards use natural content height; cover buttons have a fixed aspect ratio with contained images. Search, visibility filters, accessible dialogs and the contact inquiry review flow remain available.
 
-The excluded portfolio, profile and tutorial repositories are not shown as projects. Private repository code and credentials are not included.
+Run with a static HTTP server. The main source is index.html, portfolio-v2.css and portfolio-v2.js. About, Services and Contact share the same design.
