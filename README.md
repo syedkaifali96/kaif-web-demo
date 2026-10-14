@@ -12,3 +12,5 @@ External profile, source and demo links use direct navigation to avoid blocked n
 
 The opening hero now follows content height on all screens, with a 26px heading-to-description gap on phones. Nonfunctional focus-row and contact arrows were removed. The portrait uses a vertical frame with an angled torso and direct camera gaze. Images use contain sizing to preserve the generated framing and keep side space minimal.
 
+
+Portrait backgrounds, corner masks and filters were removed. The transparent cutout is displayed directly against its section, with a 430px desktop width limit to avoid excessive enlargement.
