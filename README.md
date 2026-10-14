@@ -10,5 +10,5 @@ Run with a static HTTP server. The main source is index.html, portfolio-v2.css a
 
 External profile, source and demo links use direct navigation to avoid blocked new-tab links. The menu provides access to all four pages. Layouts were checked at 320, 390, 768, 1024 and 1440 pixels; all internal files and anchors were validated. Service inquiry links and contact validation, preview, editing and download were exercised without submitting an inquiry.
 
-The opening hero now follows content height on all screens, with a 26px heading-to-description gap on phones. Nonfunctional focus-row and contact arrows were removed. The portrait is a chest-up ImageGen edit with transparent side margins, shown in a landscape card without covering or clipping.
+The opening hero now follows content height on all screens, with a 26px heading-to-description gap on phones. Nonfunctional focus-row and contact arrows were removed. The portrait uses a vertical frame with an angled torso and direct camera gaze. Images use contain sizing to preserve the generated framing and keep side space minimal.
 
