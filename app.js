@@ -43,10 +43,6 @@ dialog?.addEventListener('click', event => { const rect = dialog.getBoundingClie
 
 const form = document.getElementById('inquiry-form');
 if(form) {
-  const returnTo = form.querySelector('input[name="_next"]');
-  if(returnTo && ['https:','http:'].includes(location.protocol)) {
-    returnTo.value = new URL('contact.html?submitted=1', location.href).href;
-  }
   const service = document.getElementById('service');
   const requested = new URLSearchParams(location.search).get('service');
   if(['landing','website','updates','mobile','ai','other'].includes(requested)) service.value = requested;
@@ -57,34 +53,53 @@ if(form) {
   const personName = document.getElementById('name');
   personName.addEventListener('input', () => personName.setCustomValidity(''));
   const sendButton = document.getElementById('send-inquiry');
-  let sendRequested = false;
+  const deliveryStatus = document.getElementById('inquiry-delivery-status');
+  const previewNote = document.getElementById('inquiry-preview-note');
+  const editButton = document.getElementById('edit-inquiry');
+  let sending = false;
+  let sent = false;
+  let emailValues = null;
   let inquiry = '';
   form.addEventListener('submit', event => {
-    if(sendRequested) return;
     event.preventDefault();
+    if(sending || sent) return;
     if(!personName.value.trim()) { personName.setCustomValidity('Please enter your name.'); personName.reportValidity(); return; }
     personName.setCustomValidity('');
     if(message.value.trim().length < 10) { message.setCustomValidity('Please describe your project in at least 10 characters.'); message.reportValidity(); return; }
     message.setCustomValidity('');
     if(!form.reportValidity()) return;
     const data = new FormData(form);
+    emailValues = {name:String(data.get('name')).trim(),email:String(data.get('email')).trim(),service:service.selectedOptions[0].textContent,budget:String(data.get('budget')),timeline:String(data.get('timeline')).trim() || 'Not specified',message:String(data.get('message')).trim()};
     const entries = [['Name',String(data.get('name')).trim()],['Email',String(data.get('email')).trim()],['Service',service.selectedOptions[0].textContent],['Budget',String(data.get('budget'))],['Timeline',String(data.get('timeline')).trim() || 'Not specified'],['Project',String(data.get('message')).trim()]];
     const summary = document.getElementById('inquiry-summary');
     summary.replaceChildren(...entries.flatMap(([label,value]) => { const dt = document.createElement('dt'); const dd = document.createElement('dd'); dt.textContent = label; dd.textContent = value; return [dt,dd]; }));
     inquiry = `SYED KAIF ALI — INQUIRY COPY\nThis copy does not confirm email delivery.\n\n${entries.map(([label,value]) => `${label}: ${value}`).join('\n\n')}`;
+    deliveryStatus.textContent = '';
+    sendButton.disabled = false;
     form.hidden = true; result.hidden = false; result.focus({preventScroll:true}); result.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'center'});
   });
-  document.getElementById('edit-inquiry').addEventListener('click', () => { result.hidden = true; form.hidden = false; document.getElementById('name').focus(); });
-  sendButton.addEventListener('click', () => {
-    sendRequested = true;
-    try { form.requestSubmit(); } finally { sendRequested = false; }
+  editButton.addEventListener('click', () => { if(sending || sent) return; result.hidden = true; form.hidden = false; document.getElementById('name').focus(); });
+  sendButton.addEventListener('click', async () => {
+    if(sending || sent || !emailValues) return;
+    sending = true;
+    sendButton.disabled = true;
+    editButton.disabled = true;
+    result.setAttribute('aria-busy','true');
+    deliveryStatus.textContent = 'Sending your inquiry…';
+    try {
+      await window.sendKaifInquiry(emailValues, window.KAIF_EMAILJS_CONFIG);
+      sent = true;
+      sendButton.textContent = 'Inquiry sent ✓';
+      previewNote.textContent = 'Your inquiry has been submitted. You can keep a copy of the details below.';
+      deliveryStatus.textContent = 'Your inquiry was accepted for email delivery. Thank you for sharing your project.';
+    } catch {
+      deliveryStatus.textContent = 'We couldn’t confirm the send. Your details are still here. Try again, or email syedkaifali96@gmail.com directly.';
+    } finally {
+      sending = false;
+      result.setAttribute('aria-busy','false');
+      sendButton.disabled = sent;
+      editButton.disabled = sent;
+    }
   });
-  if(new URLSearchParams(location.search).get('submitted') === '1') {
-    const notice = document.createElement('p');
-    notice.className = 'submission-notice';
-    notice.setAttribute('role','status');
-    notice.textContent = 'Your inquiry was submitted. Thank you for sharing your project.';
-    document.querySelector('.contact-intro').after(notice);
-  }
   document.getElementById('download-inquiry').addEventListener('click', () => { const url = URL.createObjectURL(new Blob([inquiry], {type:'text/plain;charset=utf-8'})); const a = document.createElement('a'); a.href=url; a.download='kaif-website-inquiry.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(url),1000); });
 }
