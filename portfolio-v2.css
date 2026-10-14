@@ -288,3 +288,9 @@ dialog::backdrop{background:rgba(34,35,34,.55);backdrop-filter:blur(5px)}
 .contact-aside .direct-contact>a{max-width:100%;min-height:44px;display:inline-flex;align-items:center}
 .service-item>div,.meet-copy,.about-copy,.prose{min-width:0}
 @media(max-width:360px){.nav-brand{font-size:18px}.nav-contact{font-size:9px;gap:4px}.intro-hero h1{font-size:12.8vw}.intro-strip{font-size:6px;gap:6px}.page-hero h1{font-size:48px}.meet-copy h2{font-size:39px}.section-heading h2{font-size:43px}.contact-email{font-size:17px}.menu-link-name{font-size:36px}}
+/* Compact mobile rhythm and a chest-up portrait with visible side margins. */
+.meet-portrait img,.portrait-inline img{aspect-ratio:3/2;object-fit:contain;padding:0;height:auto;background:var(--cream)}
+.focus-row{grid-template-columns:40px 1fr 1fr;gap:28px}
+@media(max-width:760px){.intro-hero{min-height:0;height:auto;padding-top:108px;padding-bottom:26px}.intro-hero h1{margin:36px 0 28px}.intro-bottom{margin-top:0;padding-bottom:26px;gap:22px}.section-pad{padding-block:60px}.focus-row{grid-template-columns:28px 1fr;gap:12px}.focus-row p{grid-column:2;grid-row:2;max-width:100%}.project-grid{row-gap:42px}.meet-section{gap:30px}.meet-copy h2{margin:20px 0}.contact-section{padding-block:60px}.contact-details .pill-button{margin-top:24px}.skills-grid{row-gap:28px}}
+@media(max-width:480px){.intro-hero{min-height:0;height:auto;padding-top:102px;padding-bottom:22px}.intro-hero h1{margin:32px 0 26px}.intro-bottom{margin-top:0;gap:18px;padding-bottom:24px}.intro-strip{padding-top:18px}.section-pad{padding-block:48px}.about-grid{margin-bottom:36px}.section-heading{margin-bottom:30px}.focus-row{padding-block:22px}.project-toolbar{gap:20px}.repository-count{padding-bottom:24px}.project-footnote{margin-top:36px}.contact-grid{gap:26px}.site-footer{padding-top:36px}.meet-portrait figcaption{font-size:10px;gap:12px}}
+.intro-hero{min-height:0;height:auto}.intro-bottom{margin-top:0}
