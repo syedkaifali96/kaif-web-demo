@@ -299,3 +299,10 @@ dialog::backdrop{background:rgba(34,35,34,.55);backdrop-filter:blur(5px)}
 .meet-portrait,.portrait-inline{background:none;border:0;border-radius:0;box-shadow:none;overflow:visible;max-width:430px}
 .meet-portrait img,.portrait-inline img{background:transparent;border:0;border-radius:0;box-shadow:none;filter:none;padding:0;image-rendering:auto}
 @media(max-width:480px){.meet-portrait,.portrait-inline{max-width:100%}}
+/* Portrait columns match the rendered photo, avoiding unused column space. */
+.page-grid{grid-template-columns:minmax(0,430px) minmax(0,1fr);gap:clamp(28px,4vw,64px)}
+.page-grid .prose{max-width:720px}
+.meet-section{grid-template-columns:minmax(0,430px) minmax(0,1fr);column-gap:clamp(28px,4vw,64px)}
+.portrait-inline figcaption{padding:12px 0 0;font-size:11px}
+@media(max-width:900px){.page-grid,.meet-section{grid-template-columns:1fr;gap:28px}.page-grid .portrait-inline{max-width:380px}.meet-portrait{max-width:380px}}
+@media(max-width:480px){.page-grid,.meet-section{gap:24px}.page-grid .portrait-inline,.meet-portrait{max-width:100%}}
