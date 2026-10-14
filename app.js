@@ -8,35 +8,28 @@ document.addEventListener('click', event => { if(toggle && navigation && !naviga
 navigation?.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
 window.matchMedia('(min-width:761px)').addEventListener('change', closeMenu);
 
-document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
-  const filter = button.dataset.filter;
-  document.querySelectorAll('[data-filter]').forEach(item => { const selected = item === button; item.classList.toggle('is-active', selected); item.setAttribute('aria-pressed', String(selected)); });
+const projectCards = [...document.querySelectorAll('.repo-card')];
+const search = document.getElementById('repository-search');
+let selectedFilter = 'all';
+function filterRepositories() {
+  const query = (search?.value || '').trim().toLowerCase();
   let visible = 0;
-  document.querySelectorAll('[data-category]').forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; if(!card.hidden) visible++; });
+  projectCards.forEach(card => {
+    card.hidden = (selectedFilter !== 'all' && card.dataset.category !== selectedFilter) || !card.dataset.search.includes(query);
+    if (!card.hidden) visible++;
+  });
   const status = document.getElementById('filter-status');
-  if(status) status.textContent = `${visible} project${visible === 1 ? '' : 's'} shown.`;
+  if (status) status.textContent = visible + (visible === 1 ? ' repository shown.' : ' repositories shown.');
+  const empty = document.getElementById('repository-empty');
+  if (empty) empty.hidden = visible !== 0;
+}
+document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => {
+  selectedFilter = button.dataset.filter;
+  document.querySelectorAll('[data-filter]').forEach(item => { const selected = item === button; item.classList.toggle('is-active', selected); item.setAttribute('aria-pressed', String(selected)); });
+  filterRepositories();
 }));
-
-const concepts = {
-  "uninest": {
-    "title": "UniNest Pakistan",
-    "description": "An educational team project exploring a student hostel and roommate finder for Pakistan. The project repository includes the application and setup notes.",
-    "scope": [
-      "Team educational project; this portfolio does not claim sole authorship",
-      "Hostel discovery, bookings, reviews and administration",
-      "Node.js / Express and SQLite; source available on GitHub"
-    ]
-  },
-  "careswitch": {
-    "title": "CareSwitch",
-    "description": "My personal student prototype for a browser-based communication board, exploring phrase buttons, speech output and optional head-control interactions.",
-    "scope": [
-      "Personal educational prototype with a live browser demo",
-      "Speech and interaction experiments; camera use is optional",
-      "Experimental project, without clinical validation or emergency-use claims"
-    ]
-  }
-};
+search?.addEventListener('input', filterRepositories);
+const concepts = {"circlechat":{"title":"CircleChat","description":"A small-circle messenger combining a mobile client, persistent conversations and real-time communication.","scope":["Small-group messaging without relying on phone numbers.","Circles, invites, direct messaging and circle conversations.","Repository: CircleChat","Private repository; source access is restricted.","Cover: original project illustration."]},"batch-file-converter":{"title":"BatchMorph Pro","description":"Batch document and image conversion, with a React interface and server-side processing.","scope":["Document and image conversion workflows.","Work across runtime dependencies, deployment and large-file handling.","Repository: batch-file-converter","Private repository; source access is restricted.","Cover: original project illustration."]},"fandomverse":{"title":"FandomVerse","description":"A responsive fan discovery interface with navigation, search, authentication and cart interactions.","scope":["Responsive interface work across mobile and desktop.","Navigation, modals, toast notifications and cart UI.","Repository: fandomverse","Private repository; source access is restricted.","Cover: original project illustration."]},"livefit-ai":{"title":"Livefit-AI","description":"A research project exploring garment rendering, virtual try-on and generative AI workflows.","scope":["Garment-rendering experiments and model research.","Exploring realism, compute constraints and live webcam ideas.","Research experiment; no production-release claim.","Repository: Livefit-Ai","Private repository; source access is restricted.","Cover: original project illustration."]},"uninestpakistan":{"title":"UniNest Pakistan","description":"An educational team project for student hostel discovery, bookings and roommate finding in Pakistan.","scope":["Educational team project; this portfolio does not claim sole authorship.","Hostel discovery, bookings, reviews and administration.","Repository: UninestPakistan","Public repository; source available on GitHub.","Cover: original project illustration."]},"careswitch":{"title":"CareSwitch","description":"A student communication-board prototype with phrase buttons, multilingual speech and optional head-control interactions.","scope":["Personal student prototype with a live browser demo.","Camera use is optional; face-landmark processing runs on device.","No clinical validation or emergency-use claims.","Repository: careswitch","Public repository; source available on GitHub.","Cover: original project illustration."]},"maalbot":{"title":"MaalBot","description":"A conversational project exploring financial learning in Roman Urdu and English, with a savings calculator.","scope":["Financial-learning chatbot concept and calculator interactions.","Early prototype; its outputs are educational.","Repository: maalbot","Private repository; source access is restricted.","Cover: original project illustration."]},"myportfolio":{"title":"My Portfolio","description":"A data-driven portfolio bringing together project stories, skills, a build log and GitHub information.","scope":["Reusable project cards and detailed project notes.","Responsive layouts, accessible interactions and a neutral portrait placeholder.","Repository: myportfolio","Private repository; source access is restricted.","Cover: original project illustration."]},"kaif-web-demo":{"title":"Personal Web Portfolio","description":"My live four-page website with responsive navigation, project previews, services and a contact form.","scope":["Home, About, Services and Contact pages.","Project search, visibility filters and an email inquiry flow.","Repository: kaif-web-demo","Public repository; source available on GitHub.","Cover: original project illustration."]},"syedkaifali96":{"title":"GitHub Profile","description":"The repository behind my GitHub profile README, with custom project graphics, skills and portfolio links.","scope":["GitHub profile README and original SVG artwork.","Links to projects, skills and contact information.","Repository: syedkaifali96","Public repository; source available on GitHub.","Cover: original project illustration."]},"desktop-tutorial":{"title":"GitHub Desktop Tutorial","description":"A GitHub Desktop tutorial repository kept as part of my learning history.","scope":["Tutorial repository, rather than a finished application.","The repository currently contains no committed project files.","Repository: desktop-tutorial","Private repository; source access is restricted.","Cover: original project illustration."]}};
 const dialog = document.getElementById('project-dialog');
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => {
   const project = concepts[button.dataset.project]; if(!project || !dialog) return;
