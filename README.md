@@ -1,9 +1,9 @@
 # Syed Kaif Ali — Portfolio
 
-Four-page portfolio with 7 selected GitHub projects: 2 public and 5 private. Portfolio, profile and tutorial repository cards are excluded at Kaif’s request. Private project summaries were explicitly authorized by Kaif; source and repository visibility stay unchanged.
+A static portfolio inspired by the editorial layout at dossier-iota-one.vercel.app, customized with Kaif’s cream, lilac and lime palette, identity-preserving AI-assisted portrait, and seven selected projects.
 
-Run a static HTTP server in this directory to preview. The checked-in HTML/CSS/JS are the site source; the historic build-demo.mjs scaffold is not the current generator.
+Open with a static HTTP server. index.html, portfolio-v2.css and portfolio-v2.js are the main source. About, Services and Contact share the same design. The contact form retains its inquiry review and email flow; project filtering, search and dialogs run locally in the browser.
 
-Project covers in assets/projects/ are original SVG illustrations, not product screenshots. Search and public/private filters work in the browser; every project remains visible without JavaScript.
+Project covers are original SVG illustrations. The portrait was made with the built-in ImageGen tool from Kaif’s GitHub photo. No superhero or costume reveal is included.
 
-Edit project cards in index.html and matching detail records in app.js. The portfolio contains no credentials, private code or authenticated GitHub requests.
+The excluded portfolio, profile and tutorial repositories are not shown as projects. Private repository code and credentials are not included.

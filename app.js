@@ -49,7 +49,7 @@ if(form) {
   }
   const service = document.getElementById('service');
   const requested = new URLSearchParams(location.search).get('service');
-  if(['landing','website','updates','other'].includes(requested)) service.value = requested;
+  if(['landing','website','updates','mobile','ai','other'].includes(requested)) service.value = requested;
   const message = document.getElementById('message');
   const count = document.getElementById('message-count');
   message.addEventListener('input', () => { count.textContent = `${message.value.length} / 3000`; message.setCustomValidity(''); });
