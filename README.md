@@ -1,16 +1,11 @@
 # Syed Kaif Ali — Portfolio
 
-A static portfolio with a typography-led opening, Kaif's AI-assisted editorial portrait in the following introduction section, and seven selected projects. The cream, lilac and lime palette is preserved.
+A static portfolio with a typography-led opening, a user-selected portrait in the following introduction section, and seven selected projects. The cream, lilac and lime palette is preserved.
 
-Project covers are complete original SVG interface concepts created for this portfolio. They are labeled as concepts, rather than actual product screenshots. Private projects expose summaries only.
+The portrait is the exact uploaded “Polished Portrait in Navy and Glasses.png” file, copied without image edits. Home and About use the same image with contain sizing and a maximum desktop width of 430px.
 
-Project cards use natural content height; cover buttons have a fixed aspect ratio with contained images. Search, visibility filters, accessible dialogs and the contact inquiry review flow remain available.
+Project covers are original SVG interface concepts. Private projects expose summaries only. Project cards use natural content height; search, filters and accessible dialogs remain available.
+
+External links use direct navigation. The menu provides access to all four pages. The contact inquiry has validation, review, editing and download steps before sending.
 
 Run with a static HTTP server. The main source is index.html, portfolio-v2.css and portfolio-v2.js. About, Services and Contact share the same design.
-
-External profile, source and demo links use direct navigation to avoid blocked new-tab links. The menu provides access to all four pages. Layouts were checked at 320, 390, 768, 1024 and 1440 pixels; all internal files and anchors were validated. Service inquiry links and contact validation, preview, editing and download were exercised without submitting an inquiry.
-
-The opening hero now follows content height on all screens, with a 26px heading-to-description gap on phones. Nonfunctional focus-row and contact arrows were removed. The portrait uses a vertical frame with an angled torso and direct camera gaze. Images use contain sizing to preserve the generated framing and keep side space minimal.
-
-
-Portrait backgrounds, corner masks and filters were removed. The transparent cutout is displayed directly against its section, with a 430px desktop width limit to avoid excessive enlargement.
