@@ -306,3 +306,16 @@ dialog::backdrop{background:rgba(34,35,34,.55);backdrop-filter:blur(5px)}
 .portrait-inline figcaption{padding:12px 0 0;font-size:11px}
 @media(max-width:900px){.page-grid,.meet-section{grid-template-columns:1fr;gap:28px}.page-grid .portrait-inline{max-width:380px}.meet-portrait{max-width:380px}}
 @media(max-width:480px){.page-grid,.meet-section{gap:24px}.page-grid .portrait-inline,.meet-portrait{max-width:100%}}
+
+/* Keep contact details readable at every sidebar and viewport width. */
+.contact-aside{min-width:0}
+.contact-aside .direct-contact{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch;gap:20px;width:100%;max-width:100%;margin:26px 0 0;padding-top:24px}
+.contact-detail{display:grid;grid-template-columns:minmax(0,1fr);gap:5px;min-width:0;line-height:1.6;font-size:14px}
+.contact-detail-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.contact-aside .contact-detail a{display:block;width:fit-content;max-width:100%;padding:3px 0;border:0;overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:5px}
+.contact-detail>span:last-child{overflow-wrap:anywhere}
+.contact-aside .contact-profiles{display:flex;flex-wrap:wrap;gap:12px;min-width:0;padding-top:2px}
+.contact-aside .contact-profiles a{display:inline-flex;align-items:center;justify-content:space-between;gap:24px;min-width:108px;max-width:100%;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px;line-height:1.4;transition:background .2s ease,border-color .2s ease}
+.contact-aside .contact-profiles a:hover{background:var(--lilac);border-color:currentColor}
+.contact-aside .direct-contact a:focus-visible{outline:2px solid currentColor;outline-offset:5px}
+@media(max-width:480px){.contact-aside .direct-contact{gap:18px}.contact-detail{font-size:14px}.contact-aside .contact-profiles{gap:10px}}
